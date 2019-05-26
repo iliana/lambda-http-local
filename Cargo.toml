@@ -1,0 +1,16 @@
+[package]
+name = "lambda-http-local"
+version = "0.1.0"
+authors = ["iliana destroyer of worlds <iliana@buttslol.net>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/iliana/lambda-http-local"
+edition = "2018"
+
+[features]
+default = ["local"]
+local = ["hyper"]
+
+[dependencies]
+http = "0.1.17"
+hyper = { version = "0.12.29", optional = true }
+lambda_http = "0.1.1"
