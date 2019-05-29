@@ -94,12 +94,12 @@ where
 pub fn is_lambda() -> bool {
     #[cfg(feature = "local")]
     {
-        return std::env::var_os("AWS_LAMBDA_RUNTIME_API").is_some();
+        std::env::var_os("AWS_LAMBDA_RUNTIME_API").is_some()
     }
 
     #[cfg(not(feature = "local"))]
     {
-        return true;
+        true
     }
 }
 
