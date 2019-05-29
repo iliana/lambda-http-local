@@ -53,7 +53,7 @@ where
 {
     #[cfg(feature = "local")]
     {
-        if std::env::var_os("AWS_LAMBDA_RUNTIME_API").is_some() {
+        if is_lambda() {
             // AWS Lambda mode
             lambda(handler)
         } else {
@@ -88,6 +88,18 @@ where
     #[cfg(not(feature = "local"))]
     {
         lambda(handler)
+    }
+}
+
+pub fn is_lambda() -> bool {
+    #[cfg(feature = "local")]
+    {
+        std::env::var_os("AWS_LAMBDA_RUNTIME_API").is_some()
+    }
+
+    #[cfg(not(feature = "local"))]
+    {
+        true
     }
 }
 
